@@ -1,0 +1,21 @@
+// Authentication activity for the simulated SOC investigation
+// Objective: identify failed authentication followed by successful login
+
+datatable(
+    timestamp: datetime,
+    source_ip: string,
+    host: string,
+    username: string,
+    event_id: int,
+    result: string,
+    event_description: string
+)
+[
+    datetime(2026-08-25 09:01:12), "10.10.20.15", "WKSTN-104", "jsmith", 4625, "Failure", "Logon failure - bad password",
+    datetime(2026-08-25 09:01:18), "10.10.20.15", "WKSTN-104", "jsmith", 4625, "Failure", "Logon failure - bad password",
+    datetime(2026-08-25 09:01:25), "10.10.20.15", "WKSTN-104", "jsmith", 4625, "Failure", "Logon failure - bad password",
+    datetime(2026-08-25 09:01:31), "10.10.20.15", "WKSTN-104", "jsmith", 4625, "Failure", "Logon failure - bad password",
+    datetime(2026-08-25 09:01:42), "10.10.20.15", "WKSTN-104", "jsmith", 4625, "Failure", "Logon failure - bad password",
+    datetime(2026-08-25 09:02:03), "10.10.20.15", "WKSTN-104", "jsmith", 4624, "Success", "Successful interactive logon"
+]
+| order by timestamp asc
