@@ -1,0 +1,24 @@
+// Privilege and process analysis
+// Simulated SOC investigation
+
+datatable(
+    timestamp: datetime,
+    source_ip: string,
+    host: string,
+    username: string,
+    event_id: int,
+    event_category: string,
+    result: string,
+    event_description: string,
+    indicator: string,
+    severity: string
+)
+[
+    datetime(2026-08-25 09:02:03), "10.10.20.15", "WKSTN-104", "jsmith", 4624, "Authentication", "Success", "Successful interactive logon", "-", "High",
+    datetime(2026-08-25 09:02:15), "10.10.20.15", "WKSTN-104", "jsmith", 4672, "Privilege", "Success", "Special privileges assigned to new logon", "SeDebugPrivilege;SeBackupPrivilege", "High",
+    datetime(2026-08-25 09:02:44), "10.10.20.15", "WKSTN-104", "jsmith", 4688, "Process", "Success", "New process created", "powershell.exe", "High",
+    datetime(2026-08-25 09:03:02), "10.10.20.15", "WKSTN-104", "jsmith", 4688, "Process", "Success", "New process created", "rundll32.exe", "High",
+    datetime(2026-08-25 09:03:21), "10.10.20.15", "WKSTN-104", "jsmith", 5156, "Network", "Success", "Outbound connection permitted", "203.0.113.50:443", "High",
+    datetime(2026-08-25 09:04:01), "10.10.20.15", "WKSTN-104", "jsmith", 4698, "Persistence", "Success", "Scheduled task created", "WindowsUpdateCheck", "High"
+]
+| order by timestamp asc
