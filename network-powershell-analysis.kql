@@ -1,0 +1,28 @@
+// Network, PowerShell and Persistence Analysis
+// Simulated SOC Investigation
+
+datatable(
+    timestamp: datetime,
+    source_ip: string,
+    host: string,
+    username: string,
+    event_id: int,
+    event_category: string,
+    event_description: string,
+    indicator: string,
+    severity: string
+)
+[
+    datetime(2026-08-25 09:02:44), "10.10.20.15", "WKSTN-104", "jsmith", 4688,
+        "Process", "PowerShell process created", "powershell.exe", "High",
+
+    datetime(2026-08-25 09:03:02), "10.10.20.15", "WKSTN-104", "jsmith", 4688,
+        "Process", "rundll32.exe process created", "rundll32.exe", "High",
+
+    datetime(2026-08-25 09:03:21), "10.10.20.15", "WKSTN-104", "jsmith", 5156,
+        "Network", "Outbound connection permitted", "203.0.113.50:443", "High",
+
+    datetime(2026-08-25 09:04:01), "10.10.20.15", "WKSTN-104", "jsmith", 4698,
+        "Persistence", "Scheduled task created", "WindowsUpdateCheck", "High"
+]
+| order by timestamp asc
