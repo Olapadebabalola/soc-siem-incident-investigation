@@ -1,0 +1,19 @@
+| makeresults
+| eval data="2026-08-25 09:02:44|10.10.20.15|WKSTN-104|jsmith|4688|Process|PowerShell process created|powershell.exe|High;
+2026-08-25 09:03:02|10.10.20.15|WKSTN-104|jsmith|4688|Process|rundll32.exe process created|rundll32.exe|High;
+2026-08-25 09:03:21|10.10.20.15|WKSTN-104|jsmith|5156|Network|Outbound connection permitted|203.0.113.50:443|High;
+2026-08-25 09:04:01|10.10.20.15|WKSTN-104|jsmith|4698|Persistence|Scheduled task created|WindowsUpdateCheck|High"
+| makemv data delim=";"
+| mvexpand data
+| makemv data delim="|"
+| eval timestamp=mvindex(data,0),
+       source_ip=mvindex(data,1),
+       host=mvindex(data,2),
+       username=mvindex(data,3),
+       event_id=mvindex(data,4),
+       event_category=mvindex(data,5),
+       event_description=mvindex(data,6),
+       indicator=mvindex(data,7),
+       severity=mvindex(data,8)
+| table timestamp source_ip host username event_id event_category event_description indicator severity
+| sort timestamp
