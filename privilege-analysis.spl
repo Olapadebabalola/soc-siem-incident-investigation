@@ -1,22 +1,9 @@
-| makeresults
-| eval data="2026-08-25 09:02:03|10.10.20.15|WKSTN-104|jsmith|4624|Authentication|Success|Successful interactive logon|-|High;
-2026-08-25 09:02:15|10.10.20.15|WKSTN-104|jsmith|4672|Privilege|Success|Special privileges assigned to new logon|SeDebugPrivilege;SeBackupPrivilege|High;
-2026-08-25 09:02:44|10.10.20.15|WKSTN-104|jsmith|4688|Process|Success|New process created|powershell.exe|High;
-2026-08-25 09:03:02|10.10.20.15|WKSTN-104|jsmith|4688|Process|Success|New process created|rundll32.exe|High;
-2026-08-25 09:03:21|10.10.20.15|WKSTN-104|jsmith|5156|Network|Success|Outbound connection permitted|203.0.113.50:443|High;
-2026-08-25 09:04:01|10.10.20.15|WKSTN-104|jsmith|4698|Persistence|Success|Scheduled task created|WindowsUpdateCheck|High"
-| makemv data delim=";"
-| mvexpand data
-| makemv data delim="|"
-| eval timestamp=mvindex(data,0),
-       source_ip=mvindex(data,1),
-       host=mvindex(data,2),
-       username=mvindex(data,3),
-       event_id=mvindex(data,4),
-       event_category=mvindex(data,5),
-       result=mvindex(data,6),
-       event_description=mvindex(data,7),
-       indicator=mvindex(data,8),
-       severity=mvindex(data,9)
-| table timestamp source_ip host username event_id event_category result event_description indicator severity
-| sort timestamp
+source="simulated_security_events.csv" sourcetype="csv"
+username="jsmith"
+(event_id=4624 OR event_id=4672 OR event_id=4688)
+| eval event_time=strptime(timestamp,"%Y-%m-%d %H:%M:%S")
+| where event_time>=strptime("2026-08-25 09:02:00","%Y-%m-%d %H:%M:%S")
+    AND event_time<=strptime("2026-08-25 09:03:10","%Y-%m-%d %H:%M:%S")
+| rex field=_raw "^[^,]+,[^,]+,(?<endpoint_host>[^,]+),"
+| sort 0 event_time
+| table timestamp source_ip endpoint_host username event_id event_category event_description indicator severity
