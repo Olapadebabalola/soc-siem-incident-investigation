@@ -6,11 +6,15 @@ This project demonstrates an end-to-end **Security Operations Center (SOC) inves
 
 The investigation follows suspicious authentication activity from initial triage through log analysis, event correlation, privilege and process investigation, network activity, persistence analysis, PowerShell investigation, incident classification, MITRE ATT&CK mapping, and incident-response recommendations.
 
-> **Project Type:** Hands-on Cybersecurity Portfolio Project
-> **Environment:** Simulated SOC Lab
-> **Primary SIEM:** Splunk Enterprise
-> **Classification:** True Positive — Simulated Scenario
-> **Severity:** High
+### Project Overview
+
+| Category | Details |
+|---|---|
+| **Project Type** | Hands-on Cybersecurity Portfolio Project |
+| **Environment** | Simulated SOC Lab |
+| **Primary SIEM** | Splunk Enterprise |
+| **Classification** | True Positive — Simulated Scenario |
+| **Severity** | High |
 
 ---
 
