@@ -1,0 +1,6 @@
+source="simulated_security_events.csv" sourcetype="csv"
+(event_id=4104 OR indicator="powershell.exe" OR indicator="EncodedCommand")
+| eval event_time=strptime(timestamp,"%Y-%m-%d %H:%M:%S")
+| rex field=_raw "^[^,]+,[^,]+,(?<endpoint_host>[^,]+),"
+| sort 0 event_time
+| table timestamp source_ip endpoint_host username event_id event_category event_description indicator severity
