@@ -1,0 +1,9 @@
+source="simulated_security_events.csv" sourcetype="csv"
+username="jsmith"
+(event_id=4625 OR event_id=4624)
+| eval event_time=strptime(timestamp,"%Y-%m-%d %H:%M:%S")
+| where event_time>=strptime("2026-08-25 09:01:00","%Y-%m-%d %H:%M:%S")
+    AND event_time<=strptime("2026-08-25 09:02:30","%Y-%m-%d %H:%M:%S")
+| rex field=_raw "^[^,]+,[^,]+,(?<endpoint_host>[^,]+),"
+| sort 0 event_time
+| table timestamp source_ip endpoint_host username event_id result event_description severity
