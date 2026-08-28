@@ -104,7 +104,7 @@ Splunk analysis identified five Event ID `4625` failed authentication attempts f
 This pattern was classified as suspicious and required further investigation.
 
 **Evidence:**
-[View Authentication Investigation](authentication-finding.md)
+[View Authentication Investigation](findings/authentication-finding.md)
 [View Splunk Authentication Screenshot](evidence/01-authentication-analysis.png)
 
 ---
@@ -120,7 +120,7 @@ Following successful authentication, the investigation identified:
 These events were not treated as malicious independently. Their significance came from their timing and correlation with the suspicious authentication activity.
 
 **Evidence:**
-[View Privilege & Process Investigation](privilege-process-finding.md)
+[View Privilege & Process Investigation](findings/privilege-process-finding.md)
 [View Splunk Privilege & Process Screenshot](evidence/02-privilege-process-analysis.png)
 
 ---
@@ -140,7 +140,7 @@ was also created.
 Later activity associated with the scheduled task and network communication occurred under the `SYSTEM` context, increasing concern for persistence.
 
 **Evidence:**
-[View Network & Persistence Investigation](network-persistence-finding.md)
+[View Network & Persistence Investigation](findings/network-persistence-finding.md)
 [View Splunk Network & Persistence Screenshot](evidence/03-network-persistence-analysis.png)
 
 ---
@@ -184,7 +184,7 @@ SYSTEM Activity
 Encoded PowerShell
 ```
 
-[View Incident Timeline](incident-timeline.md)
+[View Incident Timeline](documentation/incident-timeline.md)
 [View Full Splunk Timeline](evidence/05-incident-timeline.png)
 
 ---
@@ -204,7 +204,7 @@ Encoded PowerShell
 | `SeDebugPrivilege`   | Privilege           | Privileged-session artifact    |
 | `SeBackupPrivilege`  | Privilege           | Privileged-session artifact    |
 
-[View IOC & Artifact Analysis](ioc-analysis.md)
+[View IOC & Artifact Analysis](findings/ioc-analysis.md)
 
 ---
 
@@ -228,7 +228,7 @@ Evidence included:
 8. Continued SYSTEM activity
 9. Encoded PowerShell telemetry
 
-[View Final Classification](final-classification.md)
+[View Final Classification](findings/final-classification.md)
 
 ---
 
@@ -243,7 +243,7 @@ Evidence included:
 
 The investigation intentionally avoids assigning ATT&CK techniques where the available telemetry does not provide sufficient evidence.
 
-[View MITRE ATT&CK Mapping](mitre-attack-mapping.md)
+[View MITRE ATT&CK Mapping](documentation/mitre-attack-mapping.md)
 
 ---
 
@@ -273,7 +273,7 @@ The simulated response plan addresses:
 * Restore approved access
 * Monitor for recurrence
 
-[View Incident Response Plan](incident-response.md)
+[View Incident Response Plan](documentation/incident-response.md)
 
 ---
 
@@ -297,15 +297,15 @@ Evidence includes:
 
 ### Splunk SPL
 
-* `authentication-analysis.spl`
-* `privilege-analysis.spl`
-* `network-powershell-analysis.spl`
+* `queries/authentication-analysis.spl`
+* `queries/privilege-analysis.spl`
+* `queries/network-persistence-analysis.spl`
 
 ### Microsoft Sentinel / KQL Examples
 
-* `authentication-analysis.kql`
-* `privilege-analysis.kql`
-* `network-powershell-analysis.kql`
+* `queries/authentication-analysis.kql`
+* `queries/privilege-analysis.kql`
+* `queries/network-powershell-analysis.kql`
 
 > The KQL files demonstrate equivalent Microsoft Sentinel investigation methodology using simulated project data. They are not presented as production Sentinel query execution.
 
@@ -330,7 +330,7 @@ The final SOC incident report consolidates:
 * Incident-response recommendations
 * Lessons learned
 
-[View Final SOC Incident Report](final-incident-report.md)
+[View Final SOC Incident Report](reports/final-incident-report.md)
 
 ---
 
