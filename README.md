@@ -105,7 +105,7 @@ This pattern was classified as suspicious and required further investigation.
 
 **Evidence:**
 [View Authentication Investigation](findings/authentication-finding.md)
-[View Splunk Authentication Screenshot](evidence/01-authentication-analysis.png)
+[View Splunk Authentication Screenshot](evidence/01-authentication-analysis.png.png)
 
 ---
 
@@ -121,7 +121,7 @@ These events were not treated as malicious independently. Their significance cam
 
 **Evidence:**
 [View Privilege & Process Investigation](findings/privilege-process-finding.md)
-[View Splunk Privilege & Process Screenshot](evidence/02-privilege-process-analysis.png)
+[View Splunk Privilege & Process Screenshot](evidence/02-privilege-process-analysis.png.png)
 
 ---
 
@@ -141,7 +141,7 @@ Later activity associated with the scheduled task and network communication occu
 
 **Evidence:**
 [View Network & Persistence Investigation](findings/network-persistence-finding.md)
-[View Splunk Network & Persistence Screenshot](evidence/03-network-persistence-analysis.png)
+[View Splunk Network & Persistence Screenshot](evidence/03-network-persistence-analysis.png.png)
 
 ---
 
@@ -156,7 +156,7 @@ Later PowerShell script-block telemetry recorded:
 Because the simulated dataset does not contain the decoded command, this artifact was treated as high-interest suspicious activity without claiming knowledge of the underlying payload.
 
 **Evidence:**
-[View Splunk PowerShell Screenshot](evidence/04-powershell-analysis.png)
+[View Splunk PowerShell Screenshot](evidence/04-powershell-analysis.png.png)
 
 ---
 
@@ -185,7 +185,7 @@ Encoded PowerShell
 ```
 
 [View Incident Timeline](documentation/incident-timeline.md)
-[View Full Splunk Timeline](evidence/05-incident-timeline.png)
+[View Full Splunk Timeline](evidence/05-incident-timeline.png.png)
 
 ---
 
